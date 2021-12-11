@@ -1,105 +1,118 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./src/page-template');
+// const generateMarkdown = require('./src/page-template');
 
-const addManager = () => {
+const addTeamlead = () => {
 
-    inquirer.prompt([
+   return inquirer.prompt([
         {
             type: 'input',
-            name: 'managerName',
-            message: 'Enter the name of your team manager?(required)',
-            validate: managerNameInput => {
-                if (managerNameInput) {
+            name: 'teamleadName',
+            message: 'Enter the name of your teamlead?(required)',
+            validate: teamleadNameInput => {
+                if (teamleadNameInput) {
                     return true;
                 } else {
-                    console.log("Please enter manager's name!");
+                    console.log("Please enter your teamlead's name!");
                     return false;
                 }
             }
         },
         {
             type: 'input',
-            name: 'managerId',
-            message: "Enter the team manager's ID?(required)",
-            validate: managerIdInput => {
-                if (managerIdInput) {
+            name: 'teamleadId',
+            message: "Enter the teamlead's ID?(required)",
+            validate: teamleadIdInput => {
+                if (teamleadIdInput) {
                     return true;
                 } else {
-                    console.log("Please enter manager's ID!");
+                    console.log("Please enter your teamlead's ID!");
                     return false;
                 }
             }
         },
         {
             type: 'input',
-            name: 'managerEmail',
-            message: "Enter the team manager's Email?(required)",
-            validate: managerEmailInput => {
-                if (managerEmailInput) {
+            name: 'teamleadEmail',
+            message: "Enter the teamlead's Email?(required)",
+            validate: teamleadEmailInput => {
+                if (teamleadEmailInput) {
                     return true;
                 } else {
-                    console.log("Please enter manager's Email!");
+                    console.log("Please enter your teamlead's Email!");
                     return false;
                 }
             }
         },
         {
             type: 'input',
-            name: 'managerOfficeNum',
-            message: "Enter the team manager's office number?(required)",
-            validate: managerOfficeNumInput => {
-                if (managerOfficeNumInput) {
+            name: 'teamleadOfficeNum',
+            message: "Enter the teamlead's office number?(required)",
+            validate: teamleadOfficeNumInput => {
+                if (teamleadOfficeNumInput) {
                     return true;
                 } else {
-                    console.log("Please enter manager's office number!");
+                    console.log("Please enter your teamlead's office number!");
                     return false;
                 }
             }
         }
-    ])
-    .then(employeeData => console.log(employeeData));
+    ]);
+    
 };       
 
-const addEmployee = employeeData => {
+const addTeamMember = teamMemberData => {
 
-    if (!employeeData.data) {
-        employeeData.data = []
+    if (!teamMemberData.data) {
+        teamMemberData.data = []
     }
     console.log(`
-    =====================
-    Add employees to team
-    =====================
+    ========================
+    Add team members to team
+    ========================
     `);
     return inquirer.prompt([
         {
             type: 'list',
-            name: 'employeePosition',
-            message: 'what is the position of your employee?',
-            choice: ['Engineer', 'Intern']
+            name: 'teamMemberPosition',
+            message: 'what is the position of your teamMember?',
+            choices: ['Engineer', 'Intern']
         },
         {
             type: 'input',
-            name: 'employeeId',
-            message: "Enter the team employee's ID?(required)",
-            validate: employeeIdInput => {
-                if (employeeIdInput) {
+            name: 'teamMemberName',
+            message: "Enter teamMember's name?(required)",
+            validate: teamMemberIdInput => {
+                if (teamMemberIdInput) {
                     return true;
                 } else {
-                    console.log("Please enter employee's ID!");
+                    console.log("Please enter teamMember's name!");
                     return false;
                 }
             }
         },
         {
             type: 'input',
-            name: 'employeeEmail',
-            message: "Enter the team employee's Email?(required)",
-            validate: employeeEmailInput => {
-                if (employeeEmailInput) {
+            name: 'teamMemberId',
+            message: "Enter the teamMember's ID?(required)",
+            validate: teamMemberIdInput => {
+                if (teamMemberIdInput) {
                     return true;
                 } else {
-                    console.log("Please enter employee's Email!");
+                    console.log("Please enter teamMember's ID!");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'teamMemberEmail',
+            message: "Enter the teamMember's Email?(required)",
+            validate: teamMemberEmailInput => {
+                if (teamMemberEmailInput) {
+                    return true;
+                } else {
+                    console.log("Please enter teamMember's Email!");
                     return false;
                 }
             }
@@ -108,7 +121,7 @@ const addEmployee = employeeData => {
             type: 'input',
             name: 'github',
             message: "Enter the Engineer's GitHub?(required)",
-            when: (input) => input.EngineerPosition === 'Engineer',
+            when: (input) => input.teamMemberPosition === 'Engineer',
             validate: engineerGithubInput => {
                 if (engineerGithubInput) {
                     return true;
@@ -122,7 +135,7 @@ const addEmployee = employeeData => {
             type: 'input',
             name: 'school',
             message: "Enter the Intern's School?(required)",
-            when: (input) => input.InternPosition === 'Intern',
+            when: (input) => input.teamMemberPosition === 'Intern',
             validate: internSchoolInput => {
                 if (internSchoolInput) {
                     return true;
@@ -134,25 +147,22 @@ const addEmployee = employeeData => {
         },
         {
             type: 'confirm',
-            name: 'confirmAddEmployee',
-            message: 'Would you like to add another employee?',
+            name: 'confirmAddTeamMember',
+            message: 'Would you like to add another teamMember?',
             default: false
         }
     ]) 
     .then(teamData => {
-        employeeData.data.push(teamData);
-        if (teamData.confirmAddEmployee) {
-            return addEmployee(employeeData);
+        teamMemberData.data.push(teamData);
+        if (teamData.confirmAddTeamMember) {
+            return addTeamMember(teamMemberData);
         } else {
-            return employeeData;
-        }  
-    
-    }); 
+            return teamMemberData;
+        }
+    });
 };
-
-addManager()
-// .then(addEmployee)
-// .then(function(info) {
-//     var dataString = generateMarkdown(info)
-//     console.log(dataString);
-// });
+addTeamlead()
+.then(addTeamMember)
+.then(teamMemberData => {
+    console.log(teamMemberData);
+});
