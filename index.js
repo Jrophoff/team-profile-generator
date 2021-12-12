@@ -70,7 +70,7 @@ const addTeamlead = () => {
             teamMemberData.teamleadName,
             teamMemberData.teamleadId,
             teamMemberData.teamleadEmail,
-            teamMemberData.teamleadNum
+            teamMemberData.teamleadOfficeNumber
             )
             teamMembers.push(teamlead) 
             addTeamMember()   
@@ -200,10 +200,7 @@ const addTeamMember = teamMemberData => {
         }
     });
 };
-addTeamlead()
-// generateMarkdown(teamMembers);
 
-// .then(teamMemberData => {
-//     console.log(teamMembers)
-//     return generateMarkdown(teamMembers);
-// });
+addTeamlead();
+
+
