@@ -8,9 +8,9 @@ const generateTeamlead = function (teamlead) {
        <h4>${teamlead.getRole()}</h4>
       </div>
       <ul class="list-group list-group-flush border rounded m-3">
-        <li class="list-group-item">${teamlead.id}</li>
-        <li class="list-group-item"><a href="mailto:${teamlead.email}">${teamlead.email}</a></li>
-        <li class="list-group-item">${teamlead.officeNumber}</li>
+        <li class="list-group-item">ID: ${teamlead.id}</li>
+        <li class="list-group-item">Email: <a href="mailto:${teamlead.email}">${teamlead.email}</a></li>
+        <li class="list-group-item">Office Number: ${teamlead.officeNumber}</li>
         </ul>
     </div>
 `
@@ -24,16 +24,15 @@ const generateEngineer = function (engineer) {
        <h4>${engineer.getRole()}</h4>
       </div>
       <ul class="list-group list-group-flush border rounded m-3">
-        <li class="list-group-item">${engineer.id}</li>
-        <li class="list-group-item"><a href="mailto:${engineer.email}">${engineer.email}</a></li>
-        <li class="list-group-item"><a href="https://github.com/${engineer.github}">Github</a></li>
+        <li class="list-group-item">ID: ${engineer.id}</li>
+        <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
+        <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.github}">Github</a></li>
       </ul>
     </div>
 `
 }
 
 const generateIntern = function (intern) {
-    console.log(intern.name);
     return `
     <div class="card m-4 shadow-lg" style="width: 15rem;">
       <div class="card-header bg-secondary text-light">
@@ -41,9 +40,9 @@ const generateIntern = function (intern) {
         <h4>${intern.getRole()}</h4>
       </div>
       <ul class="list-group list-group-flush border rounded m-3">
-       <li class="list-group-item">${intern.id}</li>
-       <li class="list-group-item"><a href="mailto:${intern.email}">${intern.email}</a></li>
-       <li class="list-group-item"><a href="https://github.com/${intern.github}">Github</a></li>
+       <li class="list-group-item">ID: ${intern.id}</li>
+       <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
+       <li class="list-group-item">School: <a href="https://github.com/${intern.github}">Github</a></li>
       </ul>
     </div>
 `
@@ -76,7 +75,6 @@ generateMarkdown = (data)  => {
 
 const teamMemberCards = teamArray.join('')
 
-console.log(teamArray)
 const generateTeam = generatePage(teamMemberCards);
 return generateTeam;
 };

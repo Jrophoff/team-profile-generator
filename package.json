@@ -19,7 +19,7 @@
     "url": "git+https://github.com/Jrophoff/team-profile-generator.git"
   },
   "author": "Jordan Ophoff",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Jrophoff/team-profile-generator/issues"
   },
