@@ -195,12 +195,24 @@ const addTeamMember = teamMemberData => {
 
         if (teamData.confirmAddTeamMember) {
             return addTeamMember();
-        } else { generateMarkdown(teamMembers);
-            return teamMemberData; 
-        }
+        }  
+        var dataString = generateMarkdown(teamMembers);
+                writeToFile('.dist/index.html', dataString)
+        
+    
     });
 };
 
-addTeamlead();
 
+function writeToFile(fileName, data) {
+    fs.writeFileSync(fileName, data, function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('success!')
+        }
+    })
+}
+
+addTeamlead();
 

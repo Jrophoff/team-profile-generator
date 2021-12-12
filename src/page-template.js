@@ -1,5 +1,6 @@
+function generateMarkdown(data) {
+
 const generateTeamlead = function (teamlead) {
-    console.log(teamlead.getRole());
     return `
     <div class="card" style="width: 18rem;">
      <div class="card-header">
@@ -16,7 +17,6 @@ const generateTeamlead = function (teamlead) {
 }
 
 const generateEngineer = function (engineer) {
-    console.log(engineer.name);
     return `
     <div class="card" style="width: 18rem;">
      <div class="card-header">
@@ -49,11 +49,11 @@ const generateIntern = function (intern) {
 `
 }
 
-module.exports = templateData => {
-    console.log(templateData);
+// module.exports = template Data => {
+    
 
-    for (let i = 0; i < templateData.length; i++) {
-        const teamMember = templateData[i];
+    for (let i = 0; i < data.length; i++) {
+        const teamMember = data[i];
         const role = teamMember.getRole();
 
         if (role === 'Teamlead') {
@@ -79,24 +79,24 @@ module.exports = templateData => {
     `
     );
 
-    // console log for Teamlead    
-    console.log(templateData[0].getRole())
-    console.log(templateData[0].getName())
-    console.log(templateData[0].getId())
-    console.log(templateData[0].getEmail())
-    console.log(templateData[0].getOfficeNumber())
-    // console log for Engineer
-    console.log(templateData[1].getRole())
-    console.log(templateData[1].getName())
-    console.log(templateData[1].getId())
-    console.log(templateData[1].getEmail())
-    console.log(templateData[1].getGithub())
-    // console log for Intern
-    console.log(templateData[2].getRole())
-    console.log(templateData[2].getName())
-    console.log(templateData[2].getId())
-    console.log(templateData[2].getEmail())
-    console.log(templateData[2].getSchool())
+    // // console log for Teamlead    
+    // console.log(data[0].getRole())
+    // console.log(data[0].getName())
+    // console.log(data[0].getId())
+    // console.log(data[0].getEmail())
+    // console.log(data[0].getOfficeNumber())
+    // // console log for Engineer
+    // console.log(data[1].getRole())
+    // console.log(data[1].getName())
+    // console.log(data[1].getId())
+    // console.log(data[1].getEmail())
+    // console.log(data[1].getGithub())
+    // // console log for Intern
+    // console.log(data[2].getRole())
+    // console.log(data[2].getName())
+    // console.log(data[2].getId())
+    // console.log(data[2].getEmail())
+    // console.log(data[2].getSchool())
 
 
 
