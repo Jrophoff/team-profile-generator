@@ -81,9 +81,6 @@ const addTeamlead = () => {
 
 const addTeamMember = teamMemberData => {
 
-    // if (!teamMemberData.data) {
-    //     teamMemberData.data = []
-    // }
     console.log(`
     ========================
     Add team members to team
@@ -171,7 +168,6 @@ const addTeamMember = teamMemberData => {
         }
     ]) 
     .then(teamData => {
-        // teamMemberData.data.push(teamData);
         if (teamData.teamMemberPosition === 'Engineer') { 
         const engineer = new Engineer(
             teamData.teamMemberName,
@@ -197,7 +193,7 @@ const addTeamMember = teamMemberData => {
             return addTeamMember();
         }  
         var dataString = generateMarkdown(teamMembers);
-                writeToFile('.dist/index.html', dataString)
+                writeToFile('./dist/index.html', dataString)
         
     
     });
