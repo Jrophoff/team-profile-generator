@@ -2,5 +2,26 @@
   "dependencies": {
     "inquirer": "^8.2.0",
     "jest": "^27.4.4"
-  }
+  },
+  "name": "team-profile-generator",
+  "description": "team profile generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test":"jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jrophoff/team-profile-generator.git"
+  },
+  "author": "Jordan Ophoff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jrophoff/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/Jrophoff/team-profile-generator#readme"
 }

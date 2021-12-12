@@ -1,6 +1,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const generateMarkdown = require('./src/page-template');
+const generateMarkdown = require('./src/page-template');
+const Engineer = require('./lib/Engineer')
+const Teamlead = require('./lib/Teamlead')
+const Intern = require('./lib/Intern')
+
+
+
+const teamMembers = []
 
 const addTeamlead = () => {
 
@@ -29,7 +36,7 @@ const addTeamlead = () => {
                     console.log("Please enter your teamlead's ID!");
                     return false;
                 }
-            }
+            } 
         },
         {
             type: 'input',
@@ -46,10 +53,10 @@ const addTeamlead = () => {
         },
         {
             type: 'input',
-            name: 'teamleadOfficeNum',
+            name: 'teamleadOfficeNumber',
             message: "Enter the teamlead's office number?(required)",
-            validate: teamleadOfficeNumInput => {
-                if (teamleadOfficeNumInput) {
+            validate: teamleadOfficeNumberInput => {
+                if (teamleadOfficeNumberInput) {
                     return true;
                 } else {
                     console.log("Please enter your teamlead's office number!");
@@ -57,15 +64,26 @@ const addTeamlead = () => {
                 }
             }
         }
-    ]);
+    ])
+    .then(teamMemberData => {
+        const teamlead = new Teamlead(
+            teamMemberData.teamleadName,
+            teamMemberData.teamleadId,
+            teamMemberData.teamleadEmail,
+            teamMemberData.teamleadNum
+            )
+            teamMembers.push(teamlead) 
+            addTeamMember()   
+    })
+
     
 };       
 
 const addTeamMember = teamMemberData => {
 
-    if (!teamMemberData.data) {
-        teamMemberData.data = []
-    }
+    // if (!teamMemberData.data) {
+    //     teamMemberData.data = []
+    // }
     console.log(`
     ========================
     Add team members to team
@@ -153,16 +171,39 @@ const addTeamMember = teamMemberData => {
         }
     ]) 
     .then(teamData => {
-        teamMemberData.data.push(teamData);
+        // teamMemberData.data.push(teamData);
+        if (teamData.teamMemberPosition === 'Engineer') { 
+        const engineer = new Engineer(
+            teamData.teamMemberName,
+            teamData.teamMemberId,
+            teamData.teamMemberEmail,
+            teamData.github
+            )
+            teamMembers.push(engineer) 
+        }
+
+        if (teamData.teamMemberPosition === 'Intern') {
+        const intern = new Intern(
+            teamData.teamMemberName,
+            teamData.teamMemberId,
+            teamData.teamMemberEmail,
+            teamData.school
+            )
+            teamMembers.push(intern) 
+        }
+
+
         if (teamData.confirmAddTeamMember) {
-            return addTeamMember(teamMemberData);
-        } else {
-            return teamMemberData;
+            return addTeamMember();
+        } else { generateMarkdown(teamMembers);
+            return teamMemberData; 
         }
     });
 };
 addTeamlead()
-.then(addTeamMember)
-.then(teamMemberData => {
-    console.log(teamMemberData);
-});
+// generateMarkdown(teamMembers);
+
+// .then(teamMemberData => {
+//     console.log(teamMembers)
+//     return generateMarkdown(teamMembers);
+// });
