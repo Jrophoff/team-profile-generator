@@ -26,7 +26,7 @@ const generateEngineer = function (engineer) {
       <ul class="list-group list-group-flush border rounded m-3">
         <li class="list-group-item">ID: ${engineer.id}</li>
         <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
-        <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.github}">Github</a></li>
+        <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a></li>
       </ul>
     </div>
 `
@@ -42,7 +42,7 @@ const generateIntern = function (intern) {
       <ul class="list-group list-group-flush border rounded m-3">
        <li class="list-group-item">ID: ${intern.id}</li>
        <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
-       <li class="list-group-item">School: <a href="https://github.com/${intern.github}">Github</a></li>
+       <li class="list-group-item">School:${intern.school}</a></li>
       </ul>
     </div>
 `
