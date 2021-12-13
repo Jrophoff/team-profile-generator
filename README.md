@@ -36,7 +36,7 @@
 #### There are three tests you can run. Make sure you have the jest package installed from npm. Once installed you can enter npm test from the command line and all four tests will run.
 
 ## Questions
-####If you have further questions please reach out via GitHub or Email.
+#### If you have further questions please reach out via GitHub or Email.
 ### GitHub:
 #### <a href="https://github.com/jrophoff">Github</a>
 
