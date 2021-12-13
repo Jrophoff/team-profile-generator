@@ -27,6 +27,8 @@
 
 #### Enter node index into the commond line. Then answer the prompts. Please review the following walkthrough video:
 
+https://watch.screencastify.com/v/Ek4wOjbAIvmU6R0MeP2e
+
 ## Screen Shot
 
 ![image](https://user-images.githubusercontent.com/90431294/145734487-b2869505-7907-4c36-a36a-0ddcb84f0316.png)
