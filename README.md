@@ -31,7 +31,7 @@ https://watch.screencastify.com/v/Ek4wOjbAIvmU6R0MeP2e
 
 ## Screen Shot
 
-![image](https://user-images.githubusercontent.com/90431294/145734487-b2869505-7907-4c36-a36a-0ddcb84f0316.png)
+![image](https://user-images.githubusercontent.com/90431294/145737764-04be6171-59b8-4c54-8ac0-8fce04526219.png)
 
 ## Tests
 
